@@ -4,6 +4,8 @@
 CVPR 2026
 </center>
 
+---
+
 **ARMFLOW** is a deep learning framework for modeling online/offline 3D Human Reaction Generation. It supports training and evaluation on both **InterHuman** and **InterX** datasets.
 
 ---
@@ -141,6 +143,6 @@ mf.siloss.cfg_omega=2.0
 - [x] Release the model.
 - [x] Release implementation ode on InterHuman Dataset
 - [x] Release the implementation on InterX dataset
-- [] Release the weights on both datasets
-- [] Release the Evaluation code
+- [ ] Release the weights on both datasets
+- [ ] Release the Evaluation code
 - [ ] Finalize the visualization scripts and dependencies. 
