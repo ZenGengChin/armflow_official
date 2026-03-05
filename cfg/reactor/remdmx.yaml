@@ -1,0 +1,97 @@
+vae:
+  name: klvaex_dt2
+  d_joint: 66
+  latent_size: 38
+  max_length: 150
+  d_input: 336
+  output_emb_width: &d_model 256
+  down_t: 2
+  stride_t: 2
+  width: 256
+  depth: 4
+  dilation_growth_rate: 3
+  activation: relu
+  norm: GN
+  
+
+  is_normal: True
+  is_double: True
+
+
+  beta_kl: 0.001
+  beta_body: 1.0
+  beta_hand: 0.2
+  beta_rec: 1.0
+  beta_transl: 1.0
+  beta_fc: 0.01
+
+  loss_fn: l1
+
+  train:
+    lr: 0.0001
+    batch_size: 64
+    epochs: 2000
+    check_val_every_n_epoch: 10
+
+
+mf:
+  name: remdmx
+  num_encoder_layers: 7
+  num_decoder_layers: 7
+  d_model: *d_model
+  d_ffn: 1024
+  nhead: 8
+  dropout: 0.2
+
+  scale_factor: 0.1825
+
+  clip_version: ViT-L/14@336px # ViT-B/32
+  clip_dim: 768
+
+  cfg_scale: 1.0
+  num_steps: 1
+
+  is_text_cond: True
+  is_skip: True
+  is_norm_first: True
+  is_adaln: False
+  is_adaln_dec: False 
+
+  # for remf2
+  is_dim1: False
+  is_dcond: False
+  is_lpe: False
+
+  text_encoder:
+    transformers_clip_version: ./deps/clip-vit-large-patch14
+    clip_version: ViT-L/14@336px
+    d_cond: 768
+    d_model: *d_model
+    is_intergen_clip: intergen # [intergen, easy, transformers]
+    is_dmodel: True
+
+
+
+  siloss:
+    time_sampler: logit_normal
+    time_mu: -0.4
+    time_sigma: 1.0
+    ratio_r_not_equal_t: 0.75
+    adaptive_p: 1.0
+    label_dropout_prob: 0.1
+    cfg_omega: 1.0
+    cfg_kappa: 0.0
+    cfg_min_t: 0.0
+    cfg_max_t: 0.8
+    is_l2: True
+
+  train:
+    lr: 0.0001
+    batch_size: 64
+    epochs: 2000
+
+
+dataset:
+  name: interhuman
+  joints_num: 22
+  max_motion_length: 300

@@ -1,0 +1,49 @@
+vqvae:
+  name: marvqvae2d_interhuman
+  input_dim: 12
+  nb_code: 1024
+  code_dim: &code_dim 256
+  output_emb_width: *code_dim
+  down_t: 2
+  stride_t: 2
+  width: *code_dim
+  depth: 4
+  dilation_growth_rate: 3
+  activation: relu
+  norm: None
+  filter_s: ~
+  stride_s: ~
+  spatial_upsample: [2, 2.2]
+
+  is_normal: True
+  loss_fn: l1
+
+  # for quantizer
+  gumbel_temperature: 0.5
+  znorm: False
+  quant_resi: 0.5
+  share_quant_resi: 4
+  quant_conv_ks: 3
+
+  lambda_vq: 0.01
+  lambda_joint: 1.0
+  lambda_root: 1.0
+  beta: 0.25
+  mu: 0.99
+
+  s_scale_numbers: [1, 2, 3, 3, 4,  4, 5]
+  t_scale_numbers: [1, 2, 4, 8, 16, 32, 75]
+
+  mask_interpolate: False
+  use_t_first: False
+
+  train:
+    lr: 0.0001
+    batch_size: 64
+    epochs: 2000
+    check_val_every_n_epoch: 10
+
+
+dataset:
+  name: interhuman
+  joints_num: 22

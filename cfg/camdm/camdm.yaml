@@ -1,0 +1,40 @@
+camdm:
+  name: camdm
+  input_feats: 262
+  njoints: 22
+  nfeats: 6
+  rot_req: True
+  clip_len: 10
+  latent_dim: 256
+  ff_size: 1024
+  num_layers: 8
+  num_heads: 4
+  dropout: 0.2
+  cond_mask_prob: 0.15
+  is_dim1: False
+  cfg_scale: 1.0
+
+  train:
+    batch_size: 64
+    lr: 0.0001
+    epochs: 1000
+
+noise_scheduler:
+  num_train_timesteps: 1000
+  num_inference_timesteps: 8
+  # beta_start: 0.00085
+  # beta_end: 0.012
+  beta_schedule: scaled_linear
+  clip_sample: false
+  set_alpha_to_one: false
+  prediction_type: sample
+  steps_offset: 1
+  eta: 0.0
+
+
+text_encoder:
+  d_cond: 768
+  clip_version: ViT-L/14@336px
+  transformers_clip_version: ./deps/clip-vit-large-patch14
+  is_intergen_clip: intergen
+  is_dmodel: False

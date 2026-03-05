@@ -1,0 +1,14 @@
+cmdm:
+  name: cmdm2_interhuman_text_ddim
+  nfeats: 262
+  num_frames: 300
+  latent_dim: 256
+  ff_size: 1024
+  num_layers: 8
+  cond_mode: text
+
+  train:
+    lr: 1e-4
+    epochs: 4000
+    check_val_every_n_epoch: 10
+    batch_size: 64

@@ -1,0 +1,30 @@
+NAME: intergen_ddim10
+NUM_LAYERS: 8
+NUM_HEADS: 8
+DROPOUT: 0.1
+INPUT_DIM: 262
+LATENT_DIM: 1024
+FF_SIZE: 2048
+ACTIVATION: gelu
+
+DIFFUSION_STEPS: 1000
+BETA_SCHEDULER: cosine
+SAMPLER: uniform
+
+MOTION_REP: global
+FINETUNE: False
+
+TEXT_ENCODER: clip
+T_BAR: 700
+
+CONTROL: text
+STRATEGY: ddim10
+CFG_WEIGHT: 3.5
+
+ONLINE: False
+
+train:
+  lr: 1e-4
+  batch_size: 64
+  epochs: 3000
+  check_val_every_n_epoch: 10
