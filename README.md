@@ -1,4 +1,4 @@
-# ARMFLOW: AutoRegressive MeanFlow for online 3D Human Reaction Generation. 
+# ARMFLOW: AutoRegressive MeanFlow for online 3D Human Reaction Generation
 
 <center>
 CVPR 2026
@@ -6,7 +6,8 @@ CVPR 2026
 
 ---
 
-**ARMFLOW** is a deep learning framework for modeling online/offline 3D Human Reaction Generation. It supports training and evaluation on both **InterHuman** and **InterX** datasets.
+This is the official-implementation of [ARMFlow: AutoRegressive MeanFlow for online 3D Human Reaction Generation
+](https://arxiv.org/abs/2512.16234).
 
 ---
 
